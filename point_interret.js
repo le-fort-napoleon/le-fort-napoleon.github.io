@@ -91,8 +91,8 @@ function showPopup(images, index) {
     iframe.style.top = '52%';
     iframe.style.left = '50%';
     iframe.style.transform = 'translate(-50%, -60%) rotate(90deg)';
-    iframe.style.width = '65vh';
-    iframe.style.height = '80vw';
+    iframe.style.width = '60vh';
+    iframe.style.height = '75vw';
     iframe.style.border = 'none';
     iframe.style.borderRadius= '15px';
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;control";
@@ -198,6 +198,7 @@ function showPopup(images, index) {
   close.style.right = '25px';
   close.style.width = '16px';
   close.style.cursor = 'pointer';
+  close.style.zIndex = '9999999999';
   close.addEventListener('click', () => {
     overlay.remove();
   });
