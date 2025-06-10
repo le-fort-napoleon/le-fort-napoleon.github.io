@@ -59,7 +59,7 @@ function showPopup(images, index) {
   overlay.style.display = 'flex';
   overlay.style.alignItems = 'center';
   overlay.style.justifyContent = 'center';
-  overlay.style.zIndex = 1000;
+  overlay.style.zIndex = 999999999;
   overlay.style.background = 'rgba(0, 0, 0, 0.5)';
 
   // Container pour l'image et les boutons
