@@ -81,7 +81,7 @@ function showPopup(images, index) {
     bg.style.maxWidth = '100%';
     bg.style.maxHeight = '100%';
     bg.style.display = 'block';
-    bg.style.margin = '0 auto';
+    bg.style.margin = '-30px auto';
     bg.style.objectFit = 'cover';
     bg.style.borderRadius = '15px';
 
@@ -140,7 +140,7 @@ function showPopup(images, index) {
   // Boutons navigation
   const nav = document.createElement('div');
   nav.style.position = 'absolute';
-  nav.style.bottom = '20px';
+  nav.style.bottom = '10px';
   nav.style.left = '50%';
   nav.style.transform = 'translateX(-50%)';
   nav.style.display = 'flex';
