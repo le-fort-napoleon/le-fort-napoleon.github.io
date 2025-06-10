@@ -280,7 +280,7 @@ pois.forEach(poi => {
     radius: 10,
     color: poi.color,
     fillColor: poi.color,
-    fillOpacity: 0.9
+    fillOpacity: 1.2
   })
   .addTo(map)
   .on('click', function () {
