@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fort Napoléon - Carte interactive</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="point_interet2.css" />
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader"><div class="spinner"></div></div>
+
+  <!-- Carte -->
+  <div id="map"></div>
+
+  <!-- Popup personnalisé -->
+  <div id="custom-popup" class="hidden">
+    <div class="popup-content">
+      <button id="close-popup">&times;</button>
+      <img src="decor.png" class="popup-decor" alt="déco">
+      <h2 id="popup-title"></h2>
+      <p id="popup-description"></p>
+    </div>
+  </div>
+
+  <!-- Image interactive avec scroll -->
+  <div id="poi-scroll-image">
+    <div class="scroll-container">
+      <img src="frise2.png" usemap="#poi-map" alt="Points d'intérêt" />
+      <map name="poi-map">
+        <area shape="rect" coords="0,0,100,214" alt="POI 1" onclick="showPOI(0)">
+        <area shape="rect" coords="100,0,200,214" alt="POI 2" onclick="showPOI(1)">
+        <area shape="rect" coords="200,0,300,214" alt="POI 3" onclick="showPOI(2)">
+        <area shape="rect" coords="300,0,400,214" alt="POI 4" onclick="showPOI(3)">
+        <area shape="rect" coords="400,0,500,214" alt="POI 5" onclick="showPOI(4)">
+      </map>
+    </div>
+  </div>
+  
+
+  
+  <script src="point_interret.js"></script>
+</body>
+</html>

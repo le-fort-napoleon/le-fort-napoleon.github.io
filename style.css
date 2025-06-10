@@ -1,0 +1,45 @@
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "roca", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.logo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.btn {
+  background-image: url('fond_marron.png');
+  color: white;
+  font-weight: bold;
+  padding: 10px 60px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -50%);
+   box-shadow: 10px 6px 9px rgba(0, 0, 0.10, 0.25); /* ombre portée */
+   animation: clignote 3s ease-in-out infinite;
+}
+@keyframes clignote {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  90% { opacity: 1; }
+}

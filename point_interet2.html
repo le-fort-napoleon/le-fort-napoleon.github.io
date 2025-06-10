@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carte interactive - Fort Napoléon</title>
+
+  <!-- Feuille de style -->
+  <link rel="stylesheet" href="point_interet2.css" />
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<style>
+    #map {
+  width: 95%;
+    max-width: 500px;
+    height: 65VH;
+    margin: 20px auto;
+  border-radius: 20px;
+  box-shadow:
+    0px 0px 15px rgba(0, 0, 0, 0.25),
+    inset -3px 0px 6px rgba(0, 0, 0, 0.25),
+    inset 3px 0px 6px rgba(0, 0, 0, 0.25);
+}
+.leaflet-control-attribution {
+  display: none !important;
+}
+</style>
+<body id="main">
+<div id="menu-wrapper">
+  <button id="icone_burger" onclick="toggleMenu()"></button> <!-- Menu Burger -->
+
+  <div id="extra-buttons" class="hidden">
+    <button id="bouton_info" onclick="window.location.href='consigne.html'"></button> <!-- Bouton Info -->
+    <button id="bouton_eng" onclick="changeLanguage()"></button> <!-- Bouton English -->
+  </div>
+</div>
+  <!-- Carte Leaflet -->
+  <div id="map"></div>
+
+  <!-- Nouvelle Frise Image avec map -->
+<div id="poi-scroll-image">
+  <div class="scroll-container">
+    <img src="frise2.png" usemap="#poi-map" alt="Points d'intérêt" />
+    <map name="poi-map">
+      <!-- POI 1 -->
+      <area shape="rect" coords="0,0,100,214" alt="POI 1" onclick="showPOI1()">
+      <!-- POI 2 -->
+      <area shape="rect" coords="100,0,200,214" alt="POI 2" onclick="showPOI2()">
+      <!-- POI 3 -->
+      <area shape="rect" coords="200,0,300,214" alt="POI 3" onclick="showPOI3()">
+      <!-- POI 4 -->
+      <area shape="rect" coords="400,0,500,214" alt="POI 4" onclick="showPOI4()">
+      <!-- POI 5 -->
+      <area shape="rect" coords="500,0,600,214" alt="POI 5" onclick="showPOI5()">
+    </map>
+  </div>
+</div>
+  <!-- Script JS -->
+  <script src="point_interret.js"></script>
+</body>
+</html>

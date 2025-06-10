@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Entrée principale",
+    "description": "L'entrée du Fort Napoléon, accessible depuis le chemin principal.",
+    "lat": 43.094115240253444,
+    "lng": 5.89358154695995
+  },
+  {
+    "title": "Cour centrale",
+    "description": "La grande cour intérieure au centre du fort.",
+    "lat": 43.09421802521018,
+    "lng": 5.8933423604384245
+  },
+  {
+    "title": "Bastion nord",
+    "description": "Le point d'observation au nord du fort.",
+    "lat": 43.09433873323465,
+    "lng": 5.89291723471149
+  },
+  {
+    "title": "Casemate est",
+    "description": "Une casemate à l'est du bâtiment.",
+    "lat": 43.09448932217845,
+    "lng": 5.8934707768085275
+  },
+  {
+    "title": "Terrasse sud",
+    "description": "La terrasse sud avec vue sur la mer.",
+    "lat": 43.0946312313,
+    "lng": 5.89318991869
+  }
+]

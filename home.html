@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>essai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="main">
+    <div id="carte">
+        <div id="menu-wrapper">
+            <button id="icone_burger"></button>
+            <div id="extra-buttons">
+                <button id="bouton_info" onclick="window.location.href='./truc.html'"></button>
+                <button id="bouton_eng" onclick="window.location.href='./truc.html'"></button>
+            </div>
+        </div>
+    </div>
+    <div id="bande_capsule">
+        <div id="chemin">
+            <article id="capsule_1">
+                <button id="b1">1</button>
+            </article>
+            <article id="capsule_2">
+                <button id="b2">2</button>
+            </article>
+            <article id="capsule_3">
+                <button id="b3">3</button>
+            </article>
+            <article id="capsule_4">
+                <button id="b4">4</button>
+            </article>
+            <article id="capsule_5">
+                <button id="b5">5</button>
+            </article>
+        </div>
+    </div>
+</body>
+<script>
+const burger = document.getElementById('icone_burger');
+const info = document.getElementById('bouton_info');
+const eng = document.getElementById('bouton_eng');
+
+let open = false;
+
+burger.addEventListener('click', () => {
+  const extraButtons = document.getElementById('extra-buttons');
+  extraButtons.classList.toggle('show');
+});
+</script>
+<script>
+  function toggleMenu() {
+    const extraButtons = document.getElementById('extra-buttons');
+    extraButtons.classList.toggle('show');
+  }
+</script>
+</html>
+
