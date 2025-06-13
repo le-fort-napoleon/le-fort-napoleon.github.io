@@ -11,9 +11,7 @@ const imagesPOI3 = ['popup3.png', 'popup3.1.png'];
 const imagesPOI4 = ['popup4.png', 'popup4.1.png'];
 
 // Images pour POI 5
-const imagesPOI5 = ['popup5.png', 'popup5.1.png'];
-
-
+const imagesPOI5 = ['popup5.png', 'popup51.png','popup51.png'];
 
 // Fonction POI 1
 function showPOI1() {
@@ -42,13 +40,9 @@ function showPOI5() {
 
 // Fonction Popup
 function showPopup(images, index) {
-  // Supprimer l'ancien overlay s'il existe
   const oldOverlay = document.getElementById('popup-overlay');
-  if (oldOverlay) {
-    oldOverlay.remove();
-  }
+  if (oldOverlay) oldOverlay.remove();
 
-  // Créer l'overlay
   const overlay = document.createElement('div');
   overlay.id = 'popup-overlay';
   overlay.style.position = 'fixed';
@@ -62,13 +56,11 @@ function showPopup(images, index) {
   overlay.style.zIndex = 999999999;
   overlay.style.background = 'rgba(0, 0, 0, 0.5)';
 
-  // Container pour l'image et les boutons
   const popup = document.createElement('div');
   popup.style.position = 'relative';
 
-  // Affichage conditionnel : image ou iframe selon l'index
   let content;
-  if (['popup1.2.png', 'popup2.1.png', 'popup3.1.png', 'popup4.1.png', 'popup5.1.png'].includes(images[index])) {
+  if (['popup1.2.png', 'popup2.1.png', 'popup3.1.png', 'popup4.1.png'].includes(images[index])) {
     content = document.createElement('div');
     content.style.position = 'relative';
     content.style.maxWidth = '90vw';
@@ -103,7 +95,6 @@ function showPopup(images, index) {
     content.appendChild(bg);
     content.appendChild(iframe);
   } else {
-    // Affiche une image sinon, avec texte centré et justifié par-dessus l'image
     content = document.createElement('div');
     content.style.position = 'relative';
     content.style.maxWidth = '90vw';
@@ -121,27 +112,69 @@ function showPopup(images, index) {
     bg.style.borderRadius = '15px';
     bg.style.objectFit = 'cover';
 
-    const texte = document.createElement('div');
-texte.innerHTML = `
-  Dans cet endroit nous allons vous replonger en 1793 au moment du conflit lié à la première république.
-  <br><br>
-  Cliquez sur la flèche pour regarder le podcast vidéo.
-  <br><br>`;
-    texte.style.position = 'absolute';
-    texte.style.top = '50%';
-    texte.style.left = '50%';
-    texte.style.transform = 'translate(-50%, -50%)';
-    texte.style.color = '#3B1503';
-    texte.style.fontFamily = 'EB Garamond, serif';
-    texte.style.fontSize = '22px';
-    texte.style.textAlign = 'justify';
-    texte.style.width = '70%';
+  const texte = document.createElement('div');
+let texteContent = '';
+
+if (images === imagesPOI1) {
+  texteContent = `Dans cet endroit nous allons vous replonger en 1793 au moment du conflit lié à la première république.<br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texte.style.fontSize = '20px';
+  texte.style.marginTop = '20px';
+
+} else if (images === imagesPOI2) {
+  texteContent = `D'ici on peut voir la mer mais surtout l'arrivée des bateaux. Préparez vous à vivre l'assaut lancé sur ce Fort.<br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texte.style.fontSize = '20px';
+  texte.style.marginTop = '20px';
+
+} else if (images === imagesPOI3) {
+  texteContent = `Suite à cette bataille Napoléon a repris le fort et a entamé des changements dessus. Pour mieux comprendre sa stratégie, mettons nous à la place d'un ennemi.
+  <br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texte.style.fontSize = '19px';
+  texte.style.marginTop = '70px';
+
+} else if (images === imagesPOI4) {
+  texteContent = `Cette forme n'est pas anodine, dans cette capsule nous allons voir l'architecture Vauban mais qui est t'il ?
+  <br><br>Sébastien Le Prestre de Vauban, marquis de Vauban né le 1er mai 1633 et mort le 30 mars 1707 à Paris, est un ingénieur, architecte militaire, urbaniste, hydraulicien et essayiste français.
+  <br><br>Il est nommé maréchal de France par Louis XIV.
+  <br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+   texte.style.fontSize = '16px';
+  texte.style.marginTop = '20px';
+  texte.style.width = '70%';
+  texte.style.setProperty('padding', '7vw', 'important');
+
+} else if (images === imagesPOI5 && index === 0) {
+  texteContent = `<p>Le fort n’a presque jamais été utilisé pour se défendre. Même s’il était important pour Napoléon, il n’a jamais été attaqué. Avec les progrès de l’artillerie, il est vite devenu inutile pour résister à un siège. Il a seulement servi de lieu de surveillance, de garnison, puis de dépôt de munitions.</p>`;
+  texte.style.fontSize = '18px';
+  texte.style.marginTop = '10px';
+
+} else if (images === imagesPOI5 && index === 1) {
+  texteContent = `<p>Pendant la Seconde Guerre mondiale, les Allemands l’ont utilisé pour sa position stratégique, y ont creusé des tranchées et installé un canon anti-aérien, mais le fort n’a jamais été bombardé. Il est resté intact et a été démilitarisé dans les années 1970. Aujourd’hui, il appartient à la ville de La Seyne et se trouve dans un espace naturel protégé.</p>`;
+  texte.style.fontSize = '18px';
+  texte.style.marginTop = '10px';
+} else if (images === imagesPOI5 && index === 2) {
+  texteContent = `<p>MERCI BANDE DE CACA</p>`;
+  texte.style.fontSize = '18px';
+  texte.style.marginTop = '10px';
+
+
+}
+// Styles communs
+texte.innerHTML = texteContent;
+texte.style.position = 'absolute';
+texte.id = "textebox";
+texte.maxWidth= '100vw';
+texte.style.top = '15%';
+texte.style.padding= '14vw';
+texte.id = "textebox";
+/*texte.style.transform = 'translate(-50%, -50%)';*/
+texte.style.color = '#3B1503';
+texte.style.fontFamily = 'EB Garamond, serif';
+texte.style.textAlign = 'justify';
+
 
     content.appendChild(bg);
     content.appendChild(texte);
   }
 
-  // Boutons navigation
   const nav = document.createElement('div');
   nav.style.position = 'absolute';
   nav.style.bottom = '10px';
@@ -152,7 +185,6 @@ texte.innerHTML = `
   nav.style.padding = '10px';
   nav.style.borderRadius = '20px';
 
-  // Flèche gauche
   const left = document.createElement('img');
   left.src = 'left-arrow.png';
   left.style.width = '30px';
@@ -163,7 +195,6 @@ texte.innerHTML = `
     showPopup(images, newIndex);
   });
 
-  // Flèche droite
   const right = document.createElement('img');
   right.src = 'right-arrow.png';
   right.style.width = '30px';
@@ -174,7 +205,6 @@ texte.innerHTML = `
     showPopup(images, newIndex);
   });
 
-  // Points (● ○)
   const dots = document.createElement('div');
   dots.style.display = 'flex';
   images.forEach((_, i) => {
@@ -194,7 +224,6 @@ texte.innerHTML = `
   nav.appendChild(dots);
   nav.appendChild(right);
 
-  // Bouton de fermeture
   const close = document.createElement('img');
   close.src = 'close.png';
   close.style.position = 'absolute';
@@ -207,36 +236,13 @@ texte.innerHTML = `
     overlay.remove();
   });
 
-  // Assembler
   popup.appendChild(content);
   popup.appendChild(nav);
   popup.appendChild(close);
   overlay.appendChild(popup);
   document.body.appendChild(overlay);
 }
-
-const popup = document.createElement('div');
-popup.classList.add('popup-slide-up'); // 👈 Ajouter l'animation
-popup.style.position = 'relative';
-popup.style.display = 'flex';
-popup.style.alignItems = 'center';
-popup.style.justifyContent = 'center';
-popup.style.maxWidth = '90%';
-popup.style.maxHeight = '90%';
-
-  function toggleMenu() {
-    const menu = document.getElementById('extra-buttons');
-    if (menu.style.display === 'none' || menu.style.display === '') {
-      menu.style.display = 'flex'; // afficher
-    } else {
-      menu.style.display = 'none'; // cacher
-    }
-  }
-
-  function changeLanguage() {
-    // Redirige vers ta version anglaise
-    window.location.href = 'index_en.html'; 
-  }
+// Initialisation de la carte Leaflet
 const map = L.map('map', {
   center: [43.0942, 5.8933], // centre du Fort Napoléon
   zoom: 17,
@@ -244,15 +250,17 @@ const map = L.map('map', {
   maxZoom: 18,
   maxBounds: [
     [43.0925, 5.8890],
-    [43.0955, 5.8955] 
+    [43.0955, 5.8955]
   ],
-  maxBoundsViscosity: 1.0 // bloque complètement en dehors de la zone
+  maxBoundsViscosity: 1.0
 });
+
+// Ajout des tuiles OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
+  attribution: '' // on masque le texte en bas
 }).addTo(map);
 
-
+// Définition des POIs avec coordonnées, action et couleur
 const pois = [
   {
     coords: [43.0940, 5.894058], // POI 1
@@ -272,14 +280,16 @@ const pois = [
   {
     coords: [43.0945, 5.8934],   // POI 4
     action: showPOI3,
-    color: '#1D79C2' // orange
+    color: '#1D79C2' // bleu
   },
   {
     coords: [43.0946, 5.8929],   // POI 5
     action: showPOI4,
-    color: '#6F3B00' // vert foncé kaki
+    color: '#6F3B00' // kaki foncé
   }
 ];
+
+// Création des marqueurs interactifs
 pois.forEach(poi => {
   L.circleMarker(poi.coords, {
     radius: 10,
@@ -289,7 +299,7 @@ pois.forEach(poi => {
   })
   .addTo(map)
   .on('click', function () {
-  map.setView(poi.coords, 19); // centre et zoom
-  poi.action();                // déclenche le popup
-});
+    map.setView(poi.coords, 19);
+    poi.action();
+  });
 });
