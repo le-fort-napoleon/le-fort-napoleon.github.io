@@ -44,6 +44,8 @@ body {
   width:233px;      
   height:360px;
  background-image: url('fond_marron.png');
+
+
 }
 
 .titre {
@@ -80,4 +82,5 @@ body {
   display: inline-block;
   text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 90px;
 }
