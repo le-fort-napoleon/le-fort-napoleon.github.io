@@ -152,7 +152,7 @@ if (images === imagesPOI1) {
   texte.style.marginTop = '10px';
 } else if (images === imagesPOI5 && index === 2) {
   texteContent = `<p>MERCI BANDE DE CACA</p>`;
-  texte.style.fontSize = '18px';
+  texte.style.fontSize = '30px';
   texte.style.marginTop = '10px';
 
 
