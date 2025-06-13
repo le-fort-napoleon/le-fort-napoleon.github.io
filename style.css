@@ -36,10 +36,4 @@ body {
   top: 75%;
   transform: translate(-50%, -50%);
    box-shadow: 10px 6px 9px rgba(0, 0, 0.10, 0.25); /* ombre portée */
-   animation: clignote 3s ease-in-out infinite;
-}
-@keyframes clignote {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  90% { opacity: 1; }
-}
+   animation: clignote 3s ease-in-out infinite;}
