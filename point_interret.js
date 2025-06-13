@@ -122,7 +122,11 @@ function showPopup(images, index) {
     bg.style.objectFit = 'cover';
 
     const texte = document.createElement('div');
-    texte.innerText = 'C’est par ici que les visiteurs pénètrent dans le Fort Napoléon. L’entrée est protégée par un pont-levis et un système défensif qui témoigne de l’ingéniosité militaire du XIXe siècle.';
+texte.innerHTML = `
+  Dans cet endroit nous allons vous replonger en 1793 au moment du conflit lié à la première république.
+  <br><br>
+  Cliquez sur la flèche pour regarder le podcast vidéo.
+  <br><br>`;
     texte.style.position = 'absolute';
     texte.style.top = '50%';
     texte.style.left = '50%';
