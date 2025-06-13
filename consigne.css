@@ -29,7 +29,7 @@ body {
 }
 
 .card {
-  padding: 30px;
+  padding: 28px;
   border-radius: 20px;
   color: white;
   background-image: url('fond_marron.png');
@@ -38,6 +38,7 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 65%;
     margin-bottom: 9px; /* Espace entre le logo et la carte */
+   
 
 }
 
@@ -48,12 +49,14 @@ body {
   text-align: center;
   font-weight: 100;
   margin-bottom: 20px;
+   line-height: 25px;
 }
 
 .card p {
   font-size: 16px;
   text-align: justify;
   margin-bottom: 16px;
+
 }
 
 .bonne-visite {
