@@ -303,3 +303,16 @@ pois.forEach(poi => {
     poi.action();
   });
 });
+
+function toggleMenu() {
+  const menu = document.getElementById('extra-buttons');
+  if (menu.style.display === 'none' || menu.style.display === '') {
+    menu.style.display = 'flex'; // afficher
+  } else {
+    menu.style.display = 'none'; // cacher
+  }
+}
+
+function changeLanguage() {
+  window.location.href = 'index_en.html'; // Redirige vers la version anglaise
+}
