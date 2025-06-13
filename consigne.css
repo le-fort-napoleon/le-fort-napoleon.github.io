@@ -26,18 +26,21 @@ body {
 
 .logo {
   width: 90px;
-  padding: 20px;
+  margin-bottom: 30px;
+  
+
   
 }
 
 .card {
+
   padding: 20px;
   border-radius: 20px;
   color: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 500px; /* ✅ pour que ça reste élégant */
-  margin-bottom: 20px;
+  margin-bottom:80px;
   width:233px;      
   height:360px;
  background-image: url('fond_marron.png');
