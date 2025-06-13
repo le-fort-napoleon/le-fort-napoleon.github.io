@@ -9,69 +9,63 @@ body {
   font-family: 'EB Garamond', serif;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0 37px; /* ✅ padding horizontal demandé */
-  width: 100%;
-  box-sizing: border-box;
   text-align: center;
+  gap: 9px; /* ✅ Espacement homogène entre les éléments */
+  margin-top: 30px;
 }
 
 .logo {
-  width: 90px;
-  margin-bottom: 30px;
-  
-
-  
+  width: 130px;
+  margin-bottom: 9px; /* Espace entre le logo et la carte */
 }
 
 .card {
-
   padding: 20px;
   border-radius: 20px;
   color: white;
+  background-image: url('fond_marron.png');
+  background-size: cover;
+  background-position: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 500px; /* ✅ pour que ça reste élégant */
-  margin-bottom:80px;
-  width:233px;      
-  height:360px;
- background-image: url('fond_marron.png');
-
+  width: 65%;
+    margin-bottom: 9px; /* Espace entre le logo et la carte */
 
 }
 
 .titre {
   font-family: 'Antiquarian-Scribe';
-  font-size: 25px;
+  font-size: 30px;
   color: white;
   text-align: center;
   font-weight: 100;
-  margin: 8px;
+  margin-bottom: 20px;
 }
 
 .card p {
-  font-size: 13px;
-  text-align: justify;  
-  
+  font-size: 16px;
+  text-align: justify;
+  margin-bottom: 16px;
 }
 
 .bonne-visite {
   font-size: 12px;
   color: white;
-   font-family: 'EB Garamond', serif;
-    display: flex;
+  font-family: 'EB Garamond', serif;
+  display: flex;
+  text-align: center;
 }
 
 .btn-visite {
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-image: url('fond_marron.png');
   font-family: 'EB Garamond', serif;
   background-position: center;
@@ -82,5 +76,5 @@ body {
   display: inline-block;
   text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  margin-bottom: 90px;
+  font-size: 18px;
 }
