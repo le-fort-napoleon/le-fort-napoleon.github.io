@@ -222,8 +222,7 @@ texte.style.overflowWrap = 'break-word';
 } else if (images === imagesPOI4) {
   texteContent = `Le tracé en étoile du Fort Napoléon n’est pas un hasard. Dans cette capsule, vous découvrirez les fondements de l’architecture de type Vauban et l’ingéniosité qui se cache derrière cette forme défensive.
   <br><br>Sébastien Le Prestre de Vauban, marquis de Vauban, né le 1er mai 1633 et mort le 30 mars 1707 à Paris, était un ingénieur, architecte militaire, urbaniste, hydraulicien et essayiste français.
-  <br><br>Il fut nommé maréchal de France par Louis XIV.
-  <br><br>Cliquez sur la flèche pour lancer le podcast.`;
+  <br><br>Il fut nommé maréchal de France par Louis XIV.`;
    texte.style.fontSize = '16px';
   texte.style.marginTop = '8okpx';
   texte.style.width = '72%';
