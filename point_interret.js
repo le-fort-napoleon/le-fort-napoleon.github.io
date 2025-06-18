@@ -13,6 +13,9 @@ const imagesPOI4 = ['popup4.png', 'popup4.1.png'];
 // Images pour POI 5
 const imagesPOI5 = ['popup5.png', 'popup51.png','popup51.png'];
 
+// Variable de contrôle pour POI 4
+let poi4Unlocked = false;
+
 // Fonction POI 1
 function showPOI1() {
   showPopup(imagesPOI1, 0);
@@ -28,9 +31,14 @@ function showPOI3() {
   showPopup(imagesPOI3, 0);
 }
 
-// Fonction POI 4
+// Fonction POI 4 (avec blocage la première fois)
 function showPOI4() {
-  showPopup(imagesPOI4, 0);
+  if (!poi4Unlocked) {
+    showAlertPopup();
+    poi4Unlocked = true;
+  } else {
+    showPopup(imagesPOI4, 0);
+  }
 }
 
 // Fonction POI 5
@@ -38,6 +46,63 @@ function showPOI5() {
   showPopup(imagesPOI5, 0);
 }
 
+// Fonction pour afficher une alerte bloquée
+function showAlertPopup() {
+  const existingAlert = document.getElementById('popup-alert');
+  if (existingAlert) existingAlert.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'popup-alert';
+  overlay.style.position = 'fixed';
+  overlay.style.top = 0;
+  overlay.style.left = 0;
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.display = 'flex';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.zIndex = 999999;
+  overlay.style.background = 'rgba(0, 0, 0, 0.8)';
+
+  const box = document.createElement('div');
+  box.style.background = '#3B1503';
+  box.style.color = 'white';
+  box.style.padding = '30px 10px';
+  box.style.borderRadius = '30px';
+  box.style.textAlign = 'center';
+  box.style.maxWidth = '80%';
+  box.style.fontFamily = `'EB Garamond', serif`;
+
+  const titre = document.createElement('div');
+  titre.innerText = 'Alerte';
+  titre.style.fontFamily = `'Antiquarian-Scribe', cursive`;
+  titre.style.fontSize = '64px';
+  titre.style.marginBottom = '20px';
+
+  const texte = document.createElement('p');
+  texte.innerHTML = `⚠️ Ce point d’intérêt n’est pas encore débloqué.<br>Approchez-vous de la zone pour y accéder.`;
+  texte.style.fontSize = '20px';
+
+  const btn = document.createElement('button');
+  btn.innerText = "D'accord";
+  btn.style.marginTop = '25px';
+  btn.style.padding = '10px 30px';
+  btn.style.fontSize = '20px';
+  btn.style.fontWeight = 'bold';
+  btn.style.fontFamily = `'EB Garamond', serif`;
+  btn.style.backgroundColor = 'white';
+  btn.style.color = '#3B1503';
+  btn.style.border = 'none';
+  btn.style.borderRadius = '20px';
+  btn.style.cursor = 'pointer';
+  btn.onclick = () => overlay.remove();
+
+  box.appendChild(titre);
+  box.appendChild(texte);
+  box.appendChild(btn);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+}
 // Fonction Popup
 function showPopup(images, index) {
   const oldOverlay = document.getElementById('popup-overlay');
@@ -76,9 +141,23 @@ function showPopup(images, index) {
     bg.style.margin = '-30px auto';
     bg.style.objectFit = 'cover';
     bg.style.borderRadius = '15px';
+    bg.style.width = '100%';
+    bg.style.maxWidth = '90vw';
+    bg.style.height = 'auto';
 
+    // Détermine la source de l'iframe selon le POI
+    let iframeSrc = "https://www.youtube.com/embed/U2h0hLJ5ZkQ?si=aHzIrShNfilP-dCm?controls=1"; // valeur par défaut
+    if (images === imagesPOI1) {
+      iframeSrc = "https://www.youtube.com/embed/LPOHxxthINM?si=k_kMMSyEAotjLd0I";
+    } else if (images === imagesPOI2) {
+      iframeSrc = "https://www.youtube.com/embed/L3btZn76XyY?si=8VOI32YoS3XFoC0D";
+    } else if (images === imagesPOI3) {
+      iframeSrc = "https://www.youtube.com/embed/KEVgelqNllA?si=HZZFK9bEDrQi_Bs_";
+    } else if (images === imagesPOI4) {
+      iframeSrc = "https://www.youtube.com/embed/L3btZn76XyY?si=8VOI32YoS3XFoC0D";
+    }
     const iframe = document.createElement('iframe');
-    iframe.src = "https://www.youtube.com/embed/U2h0hLJ5ZkQ?si=aHzIrShNfilP-dCm?controls=1";
+    iframe.src = iframeSrc;
     iframe.style.position = 'absolute';
     iframe.style.top = '52%';
     iframe.style.left = '50%';
@@ -116,44 +195,68 @@ function showPopup(images, index) {
 let texteContent = '';
 
 if (images === imagesPOI1) {
-  texteContent = `Dans cet endroit nous allons vous replonger en 1793 au moment du conflit lié à la première république.<br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texteContent = `Bienvenue au cœur du Fort Napoléon. Plongez dans l’année 1793 et revivez les événements marquants du siège de Toulon à travers notre capsule vidéo.<br><br>Cliquez sur la flèche pour lancer le podcast.`;
   texte.style.fontSize = '20px';
   texte.style.marginTop = '20px';
+  texte.style.maxWidth = '80vw';
+texte.style.wordBreak = 'break-word';
+texte.style.overflowWrap = 'break-word';
 
 } else if (images === imagesPOI2) {
-  texteContent = `D'ici on peut voir la mer mais surtout l'arrivée des bateaux. Préparez vous à vivre l'assaut lancé sur ce Fort.<br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texteContent = `Depuis ce point de vue stratégique, observez l’horizon marin et découvrez l’arrivée des navires. Plongez au cœur de l’assaut à travers notre capsule vidéo.<br><br>Cliquez sur la flèche pour lancer le podcast.`;
   texte.style.fontSize = '20px';
   texte.style.marginTop = '20px';
+  texte.style.maxWidth = '80vw';
+  texte.style.wordBreak = 'break-word';
+  texte.style.overflowWrap = 'break-word';
 
 } else if (images === imagesPOI3) {
-  texteContent = `Suite à cette bataille Napoléon a repris le fort et a entamé des changements dessus. Pour mieux comprendre sa stratégie, mettons nous à la place d'un ennemi.
-  <br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texteContent = `Après cette reprise du fort par Napoléon, des modifications stratégiques ont été apportées. Pour mieux les comprendre, imaginons-nous dans la peau de ses adversaires.
+  <br><br>Cliquez sur la flèche pour lancer le podcast.`;
   texte.style.fontSize = '19px';
   texte.style.marginTop = '70px';
+texte.style.maxWidth = '80vw';
+texte.style.wordBreak = 'break-word';
+texte.style.overflowWrap = 'break-word';
 
 } else if (images === imagesPOI4) {
-  texteContent = `Cette forme n'est pas anodine, dans cette capsule nous allons voir l'architecture Vauban mais qui est t'il ?
-  <br><br>Sébastien Le Prestre de Vauban, marquis de Vauban né le 1er mai 1633 et mort le 30 mars 1707 à Paris, est un ingénieur, architecte militaire, urbaniste, hydraulicien et essayiste français.
-  <br><br>Il est nommé maréchal de France par Louis XIV.
-  <br><br>Cliquez sur la flèche pour regarder le podcast vidéo.`;
+  texteContent = `Le tracé en étoile du Fort Napoléon n’est pas un hasard. Dans cette capsule, vous découvrirez les fondements de l’architecture de type Vauban et l’ingéniosité qui se cache derrière cette forme défensive.
+  <br><br>Sébastien Le Prestre de Vauban, marquis de Vauban, né le 1er mai 1633 et mort le 30 mars 1707 à Paris, était un ingénieur, architecte militaire, urbaniste, hydraulicien et essayiste français.
+  <br><br>Il fut nommé maréchal de France par Louis XIV.
+  <br><br>Cliquez sur la flèche pour lancer le podcast.`;
    texte.style.fontSize = '16px';
-  texte.style.marginTop = '20px';
-  texte.style.width = '70%';
+  texte.style.marginTop = '8okpx';
+  texte.style.width = '72%';
   texte.style.setProperty('padding', '7vw', 'important');
 
 } else if (images === imagesPOI5 && index === 0) {
-  texteContent = `<p>Le fort n’a presque jamais été utilisé pour se défendre. Même s’il était important pour Napoléon, il n’a jamais été attaqué. Avec les progrès de l’artillerie, il est vite devenu inutile pour résister à un siège. Il a seulement servi de lieu de surveillance, de garnison, puis de dépôt de munitions.</p>`;
+  texteContent = `<p>À l’origine conçu comme un bastion défensif, le Fort Napoléon n’a en réalité jamais été attaqué. L’évolution des techniques militaires, notamment l’essor de l’artillerie, l’a rapidement rendu obsolète. Il fut alors utilisé comme poste d’observation, caserne militaire et entrepôt de munitions.</p>`;
   texte.style.fontSize = '18px';
   texte.style.marginTop = '10px';
+  texte.style.maxWidth = '80vw';
+  texte.style.wordBreak = 'break-word';
+  texte.style.overflowWrap = 'break-word';
 
 } else if (images === imagesPOI5 && index === 1) {
-  texteContent = `<p>Pendant la Seconde Guerre mondiale, les Allemands l’ont utilisé pour sa position stratégique, y ont creusé des tranchées et installé un canon anti-aérien, mais le fort n’a jamais été bombardé. Il est resté intact et a été démilitarisé dans les années 1970. Aujourd’hui, il appartient à la ville de La Seyne et se trouve dans un espace naturel protégé.</p>`;
+  texteContent = `<p>Durant la Seconde Guerre mondiale, les forces allemandes ont investi le fort en raison de sa position dominante. Elles y ont installé un canon anti-aérien et des tranchées, mais le site n’a jamais subi de bombardement. Préservé des destructions, il a été désarmé dans les années 1970 et appartient désormais à la ville de La Seyne, intégré à un espace naturel protégé.</p>`;
   texte.style.fontSize = '18px';
   texte.style.marginTop = '10px';
+  texte.style.maxWidth = '80vw';
+  texte.style.wordBreak = 'break-word';
+  texte.style.overflowWrap = 'break-word';
 } else if (images === imagesPOI5 && index === 2) {
-  texteContent = `<p>MERCI BANDE DE CACA</p>`;
-  texte.style.fontSize = '30px';
+  texteContent = `
+    <p style="text-align: center;"><strong>Merci pour votre visite au Fort Napoléon.</strong></p>
+    <p>
+      Nous espérons que cette exploration interactive vous a permis de découvrir le site autrement, à travers ses secrets, ses points de vue et son histoire.<br><br>
+      Revenez nous voir bientôt… l’histoire continue à se vivre ici.
+    </p>`;
+  
+  texte.style.fontSize = '18px';
   texte.style.marginTop = '10px';
+  texte.style.maxWidth = '80vw';
+  texte.style.textAlign = 'justify';
+
 
 
 }
@@ -194,12 +297,12 @@ texte.style.textAlign = 'justify';
     const newIndex = (index - 1 + images.length) % images.length;
     showPopup(images, newIndex);
   });
+const right = document.createElement('img');
+right.src = 'right-arrow.png';
+right.style.width = '30px';
+right.style.marginLeft = '20px';
+right.style.cursor = 'pointer';
 
-  const right = document.createElement('img');
-  right.src = 'right-arrow.png';
-  right.style.width = '30px';
-  right.style.marginLeft = '20px';
-  right.style.cursor = 'pointer';
   right.addEventListener('click', () => {
     const newIndex = (index + 1) % images.length;
     showPopup(images, newIndex);
@@ -311,8 +414,4 @@ function toggleMenu() {
   } else {
     menu.style.display = 'none'; // cacher
   }
-}
-
-function changeLanguage() {
-  window.location.href = 'index_en.html'; // Redirige vers la version anglaise
 }
